@@ -1,0 +1,196 @@
+.about-section {
+  background: var(--bg);
+  position: relative;
+  overflow: hidden;
+}
+
+.about-bg-pattern {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 15% 30%, var(--gold-bg) 0%, transparent 40%),
+    radial-gradient(circle at 85% 70%, rgba(37, 99, 235, 0.04) 0%, transparent 40%);
+  pointer-events: none;
+}
+
+/* ── Director Card — Full-width glass container ── */
+.director-card {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 0;
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+/* ── Left Column ── */
+.director-card__left {
+  padding: 40px 36px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-right: 1px solid var(--surface-border);
+  background: var(--gold-bg);
+}
+
+.director-card__photo-wrap {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.director-card__photo-ring {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 2px dashed var(--gold-border);
+  animation: ringRotate 20s linear infinite;
+}
+
+@keyframes ringRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.director-card__photo {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--gold);
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 8px 32px var(--gold-glow);
+}
+
+.director-card__name {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.director-card__role {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 24px;
+}
+
+/* Credential badges */
+.director-card__badges {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  margin-bottom: 28px;
+}
+
+.director-card__badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  border: 1px solid var(--surface-border);
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.director-card__badge svg {
+  color: var(--gold);
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+/* Quote — embedded in left column */
+.director-card__quote {
+  padding-top: 24px;
+  border-top: 1px solid var(--surface-border);
+  width: 100%;
+}
+
+.director-card__quote-icon {
+  font-size: 1.2rem;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+
+.director-card__quote blockquote {
+  font-family: var(--font-display);
+  font-size: 0.92rem;
+  font-style: italic;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+/* ── Right Column ── */
+.director-card__right {
+  padding: 40px 44px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  justify-content: center;
+}
+
+.director-card__bio-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--gold);
+}
+
+.director-card__divider {
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  border-radius: 1px;
+}
+
+.director-card__right p {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.85;
+}
+
+/* ── Responsive ── */
+@media (max-width: 860px) {
+  .director-card {
+    grid-template-columns: 1fr;
+  }
+
+  .director-card__left {
+    border-right: none;
+    border-bottom: 1px solid var(--surface-border);
+    padding: 32px 28px;
+  }
+
+  .director-card__right {
+    padding: 32px 28px;
+  }
+
+  .director-card__photo {
+    width: 110px;
+    height: 110px;
+  }
+}
+
+@media (max-width: 480px) {
+  .director-card__left {
+    padding: 28px 20px;
+  }
+
+  .director-card__right {
+    padding: 28px 20px;
+  }
+
+  .director-card__photo {
+    width: 96px;
+    height: 96px;
+  }
+}

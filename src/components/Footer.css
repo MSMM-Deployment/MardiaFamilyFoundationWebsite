@@ -1,0 +1,115 @@
+.footer {
+  background: var(--bg-alt);
+  border-top: 1px solid var(--surface-border);
+  padding: 64px 0 0;
+  color: var(--text-secondary);
+}
+
+.footer__top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1.5fr;
+  gap: 48px;
+}
+
+.footer__brand-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.footer__logo {
+  width: 120px;
+  height: auto;
+  object-fit: contain;
+  border-radius: var(--radius-sm);
+}
+
+.footer__name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.footer__sub {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+.footer__tagline {
+  font-size: 0.85rem;
+  line-height: 1.7;
+  margin-bottom: 18px;
+  color: var(--text-secondary);
+}
+
+.footer__socials {
+  display: flex;
+  gap: 8px;
+}
+
+.footer__socials a {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--surface-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  transition: all var(--transition);
+}
+
+.footer__socials a:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: #fff;
+}
+
+.footer__col h4 {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text);
+  margin-bottom: 16px;
+}
+
+.footer__col button,
+.footer__col a,
+.footer__link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  padding: 5px 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  transition: color var(--transition);
+}
+
+.footer__col button:hover,
+.footer__col a:hover {
+  color: var(--gold);
+}
+
+.footer__bottom {
+  margin-top: 40px;
+  padding: 20px 0;
+  border-top: 1px solid var(--surface-border);
+  text-align: center;
+}
+
+.footer__bottom p {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+@media (max-width: 768px) {
+  .footer { padding: 40px 0 0; }
+  .footer__top { grid-template-columns: 1fr; gap: 28px; }
+}
