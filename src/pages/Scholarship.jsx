@@ -1,4 +1,5 @@
-import { FaDollarSign, FaGraduationCap, FaHandHoldingHeart } from 'react-icons/fa'
+import { useState } from 'react'
+import { FaDollarSign, FaGraduationCap, FaHandHoldingHeart, FaExternalLinkAlt, FaSpinner } from 'react-icons/fa'
 import AnimatedSection from '../components/AnimatedSection'
 import './Scholarship.css'
 
@@ -8,12 +9,18 @@ const impacts = [
   { icon: <FaHandHoldingHeart />, title: 'Build Future Leaders', desc: "Investing in students who will shape Louisiana's future through engineering innovation.", color: 'var(--purple)' },
 ]
 
+const SCHOLARSHIP_FORM_ID = 'sQ6yP53Z5keMqmLoVqvIOgImFDBbNoJMunpdviX0YENUOU5HMktCS1IwRzFWOTc2UkJVR1lWWkhUUy4u'
+const SCHOLARSHIP_FORM_EMBED = `https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=${SCHOLARSHIP_FORM_ID}&embed=true`
+const SCHOLARSHIP_FORM_DIRECT = `https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=${SCHOLARSHIP_FORM_ID}`
+
 const scrollTo = (id) => {
   const el = document.getElementById(id)
   if (el) window.scrollTo({ top: el.offsetTop - 80, behavior: 'smooth' })
 }
 
 export default function Scholarship() {
+  const [iframeLoaded, setIframeLoaded] = useState(false)
+
   return (
     <section id="scholarship" className="section section-alt scholarship-section">
       <div className="container">
@@ -49,9 +56,51 @@ export default function Scholarship() {
               <h3>Don&rsquo;t let finances stand in your way</h3>
               <p>Take the first step toward making your engineering education a reality.</p>
             </div>
-            <button onClick={() => scrollTo('apply')} className="btn btn-primary">
+            <button onClick={() => scrollTo('scholarship-apply')} className="btn btn-primary">
               Start Your Application
             </button>
+          </div>
+        </AnimatedSection>
+
+        <AnimatedSection direction="up" delay={0.2}>
+          <div id="scholarship-apply" className="scholarship-form-wrap">
+            <div className="scholarship-form-header">
+              <span className="section-label">Application Form</span>
+              <h3 className="scholarship-form-title">
+                Scholarship <span className="text-gold">Application</span>
+              </h3>
+              <p className="scholarship-form-desc">
+                Complete the secure Microsoft Forms application below. Your responses are submitted directly
+                to the Mardia Family Foundation team for review.
+              </p>
+              <a
+                href={SCHOLARSHIP_FORM_DIRECT}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="scholarship-form-newtab"
+              >
+                Open form in new tab <FaExternalLinkAlt size={11} />
+              </a>
+            </div>
+
+            <div className="scholarship-form-frame glass-card">
+              {!iframeLoaded && (
+                <div className="scholarship-form-loading" aria-hidden="true">
+                  <FaSpinner className="spin" size={22} />
+                  <span>Loading scholarship application…</span>
+                </div>
+              )}
+              <iframe
+                title="Mardia Family Foundation Scholarship Application"
+                src={SCHOLARSHIP_FORM_EMBED}
+                className="scholarship-form-iframe"
+                onLoad={() => setIframeLoaded(true)}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="strict-origin-when-cross-origin"
+                style={{ opacity: iframeLoaded ? 1 : 0 }}
+              />
+            </div>
           </div>
         </AnimatedSection>
       </div>
